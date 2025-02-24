@@ -8,7 +8,7 @@ const generateSessionId = () => crypto.randomUUID();
 export async function loginUser({ email, password }) {
 	// //console.log('loginUser called with:', { email, password });
 	const result = await query(
-		'SELECT id, password_hash, security_level FROM users WHERE email = ?',
+		'SELECT id, password_hash, security_level FROM users WHERE email = $1',
 		[email]
 	);
 	//console.log('Query result:', result);
