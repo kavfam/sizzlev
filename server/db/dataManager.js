@@ -1,11 +1,10 @@
 import { Pool } from 'pg';
-import { env } from '$env/static/private';
 
-const pool = new Pool({ connectionString: env.DATABASE_URL });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function query(sql, params = []) {
 	try {
-		const [rows] = await pool.query(sql, params);
+		const rows = await pool.query(sql, params);
 		return rows || [];
 	} catch (error) {
 		console.error('Database Query Error:', error);
