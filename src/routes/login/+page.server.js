@@ -2,21 +2,21 @@
 import { query } from '../../../server/db/dataManager.js';
 import { loginUser } from '../../../server/auth/loginUser.js';
 import { redirect } from '@sveltejs/kit';
-import { setUserState, setAppData } from '$lib/signals/appSignals.svelte.js';
+import { setUserState } from '$lib/signals/appSignals.svelte.js';
 
 export const actions = {
 	login: async ({ request, cookies }) => {
-		console.log('Login action started'); // Debug
+		console.log('Login action started');
 		const formData = await request.formData();
 		const email = formData.get('email');
 		const password = formData.get('password');
 		console.log('Form data:', { email, password });
 
 		const user = await loginUser({ email, password });
-		console.log('User:', user);
+		console.log('Login result:', user);
 		if (!user) {
 			console.log('Invalid credentials');
-			return { error: 'Invalid credentials' };
+			return { status: 401, error: 'Invalid credentials' }; // Proper failure
 		}
 
 		cookies.set('session', user.sessionId, {
