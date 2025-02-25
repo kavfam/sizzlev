@@ -5,11 +5,12 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function query(sql, params = []) {
 	try {
-		const rows = await pool.query(sql, params);
-		return rows || [];
+		const result = await pool.query(sql, params);
+		console.log('Raw query result:', result); // Debug
+		return result.rows || []; // Explicitly return rows
 	} catch (error) {
-		console.error('Database Query Error:', error);
-		throw error;
+		console.error('Database Query Error:', error.message);
+		throw new Error('Query failed: ' + error.message);
 	}
 }
 
