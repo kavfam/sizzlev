@@ -12,7 +12,7 @@
 	<div class="nav-center">
 		<button
 			class="btn-sidebar-toggle"
-			on:click={() => toggleNav(!getSidebarState().isOpen)}
+			onclick={() => toggleNav(!getSidebarState().isOpen)}
 			aria-label="Toggle navigation"
 		>
 			<i class="fas fa-bars"></i>
@@ -35,7 +35,7 @@
 							<li><a href={'/legal?type=status'}>Status</a></li>
 						</ul>
 					</li>
-					<li><a href={'#'} on:click={() => logoutUser()}>Logout</a></li>
+					<li><a href={'#'} onclick={() => logoutUser()}>Logout</a></li>
 				{:else}
 					<li><a href={'/login'}>Login</a></li>
 				{/if}

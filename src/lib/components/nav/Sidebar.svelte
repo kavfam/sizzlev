@@ -1,6 +1,6 @@
 <script>
 	import links from '$lib/links';
-	import Logio from '$lib/components/Nav/Logio.svelte';
+	import Logio from '$lib/components/nav/Logio.svelte';
 	import Moon from '$lib/moon.svelte';
 	import Sun from '$lib/sun.svelte';
 	import { toggleNav } from '$lib/signals/appSignals.svelte';

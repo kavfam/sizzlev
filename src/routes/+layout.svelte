@@ -1,8 +1,8 @@
 <script>
 	import '../app.css';
-	import Nav from '$lib/components/Nav/Nav.svelte';
+	import Nav from '$lib/components/nav/Nav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import Sidebar from '$lib/components/Nav/Sidebar.svelte';
+	import Sidebar from '$lib/components/nav/Sidebar.svelte';
 	import Alert from '$lib/components/Alert.svelte';
 	import { getSidebarState, getAlertState } from '$lib/signals/appSignals.svelte';
 	import { getUserState, setUserState } from '$lib/signals/appSignals.svelte.js';
