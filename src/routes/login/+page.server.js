@@ -16,7 +16,7 @@ export const actions = {
 		console.log('Login result:', user);
 		if (!user) {
 			console.log('Invalid credentials');
-			return { status: 401, error: 'Invalid credentials' }; // Proper failure
+			throw { status: 401, type: 'failure', data: { error: 'Invalid credentials' } }; // Fixed type
 		}
 
 		cookies.set('session', user.sessionId, {
