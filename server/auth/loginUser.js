@@ -1,5 +1,5 @@
 import { query } from '../../server/db/dataManager.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 // console.log('Test hash for password123:', bcrypt.hashSync('password123', 10));
 
