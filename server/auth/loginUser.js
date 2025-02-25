@@ -1,4 +1,5 @@
 import { query } from '../../server/db/dataManager.js';
+import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 
 export async function loginUser({ email, password }) {
@@ -14,7 +15,9 @@ export async function loginUser({ email, password }) {
 
 	const user = rows[0];
 	console.log('User found:', user);
-	if (password !== user.password_hash) {
+	const match = await bcrypt.compare(password, user.password_hash || '');
+	console.log('Password match:', match);
+	if (!match) {
 		console.log('Password mismatch for user:', email);
 		return null;
 	}
